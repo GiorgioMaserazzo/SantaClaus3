@@ -1,0 +1,35 @@
+﻿@model SantaClaus3.User
+@{
+    ViewBag.Title = "MySanta App";
+}
+@using (Html.BeginForm("Home"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-xs-8">
+                <h2 style="text-align:center;">Login</h2>
+            </div>
+            <div class="col-xs-4 form-group" style="margin-top:20px;">
+                <input id="login" type="submit" value="Login" class="btn btn-success" />
+            </div>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(Model => Model.Email, new { htmlAttributes = new { @class = "form-control", id = "textName" } })
+                @Html.ValidationMessageFor(Model => Model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(Model => Model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", id = "textFBId" } })
+                @Html.ValidationMessageFor(Model => Model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+}

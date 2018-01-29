@@ -1,0 +1,35 @@
+﻿@using SantaClaus3.Models
+@{
+    ViewBag.Title = "Details";
+}
+@model Orders
+@using SantaClaus3
+<h2 style="text-align:center" ;>Transaction Details</h2>
+<div>
+    <h4>Requests Kid</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @ViewBag.Status
+
+            @Html.ActionLink(" Edit", "Edit", new { id = @ViewBag.Id, status = @ViewBag.Status }, new { @class = "btn btn-default glyphicon glyphicon-pencil" })
+
+        </dt>
+        <dd>
+            @ViewBag.KidName
+        </dd>
+        <dt>
+            @ViewBag.Date
+        </dt>
+        Toys
+        @foreach (var toys in Model.ToyList)
+        {
+            <dd>
+
+                @toys.ToyName
+            </dd>
+        }
+
+    </dl>
+</div>
+@Html.ActionLink(" Back", "Index", null, new { @class = "btn btn-primary glyphicon glyphicon-circle-arrow-left" })

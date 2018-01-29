@@ -1,0 +1,13 @@
+﻿@model SantaClaus3.User
+@{
+    ViewBag.Title = "Logout";
+}
+<h2 style="text-align:center;" h2>Log Out</h2>
+<div class="row">
+    <div class="col-xs-8">
+        <h2 style="text-align:center;">Thank you for using MySanta App</h2>
+    </div>
+    <div class="col-xs-4 form-group" style="margin-top:20px;">
+        @Html.ActionLink("Login", "Login", "Users", null, new { @class = "btn btn-success" })
+    </div>
+</div>

@@ -1,0 +1,116 @@
+﻿@using SantaClaus3.Models
+@{
+    ViewBag.Title = " Request Toys Kids";
+}
+@model Orders
+
+<div class="row">
+    <div class="col-xs-8">
+        <h2 style="text-align:center;">Toys</h2>
+    </div>
+</div>
+@if (Session["ScreenName"].ToString() == "FabulousZiggy")
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Kid</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var request in Model.EntityList)
+            {
+                var colorAlert = "";
+                var status = "";
+                switch (request.Status)
+                {
+                    case 0:
+                        status = "In Progress";
+                        colorAlert = "alert-danger";
+                        break;
+                    case 1:
+                        status = "Available";
+                        colorAlert = "alert-warning";
+                        break;
+                    case 2:
+                        status = "Done";
+                        colorAlert = "alert-danger";
+                        break;
+                    default:
+                        break;
+                }
+                <tr class=@colorAlert>
+
+                    <td>
+                        @Html.DisplayName(status)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink(request.Date.ToString("dd-MMM-yyyy"), "Details", new { id = request.ID })
+                    </td>
+                    <td>
+                        @Html.ActionLink(request.KidName, "Details", new { id = request.ID })
+                    </td>
+                    <td></td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Kid</th>
+                <th>Price Tot</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var request in Model.EntityList)
+            {
+                var colorAlert = "";
+                var status = "";
+                switch (request.Status)
+                {
+                    case 0:
+                        status = "In Progress";
+                        colorAlert = "alert-danger";
+                        break;
+                    case 1:
+                        status = "Available";
+                        colorAlert = "alert-warning";
+                        break;
+                    case 2:
+                        status = "Done";
+                        colorAlert = "alert-success";
+                        break;
+                    default:
+                        break;
+                }
+                <tr class=@colorAlert>
+                    <td>
+                        @Html.DisplayName(status)
+                    </td>
+
+                    <td>
+                        @Html.DisplayName(request.Date.ToString("dd-MMM-yyyy"))
+                    </td>
+                    <td>
+                        @Html.DisplayName(request.KidName)
+                    </td>
+                    <td></td>
+                    @*<td>@Html.DisplayName(request.PriceRequest.ToString())</td>*@
+                    @*<td>@ViewBag.s</td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+}
